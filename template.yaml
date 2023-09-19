@@ -67,7 +67,7 @@ spec:
          title: projectKey
          type: string
          description: Unique name of the project
-      headers:
+       headers:
         title: berrier token
         type: string
         description: enter your sonarqube user token
