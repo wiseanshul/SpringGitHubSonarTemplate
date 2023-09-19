@@ -145,7 +145,7 @@ spec:
       name: Create github repositry secret of sonar host url
       action: github:repo:secret
       input:
-        githubToken: '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'
+        githubToken: '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'
         repositoryOwner: 'wiseanshul'
         repositoryName: 'cccc'
         secretName: 'SONAR_HOST_URL'
@@ -155,7 +155,7 @@ spec:
       name: Create github repositry secret
       action: github:repo:secret
       input:
-        githubToken: "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"
+        githubToken: "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"
         repositoryOwner: ${{ parameters.ownerName }}
         repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_TOKEN'
