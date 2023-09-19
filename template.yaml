@@ -150,10 +150,10 @@ spec:
       action: github:repo:secret
       input:
         githubToken: ${{ parameters.githubToken }}
-        repositoryOwner: 'wiseanshul'
-        repositoryName: 'cccc'
+        repositoryOwner: ${{ parameters.ownerName }}
+        repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_HOST_URL'
-        secretValue: '1234'
+        secretValue: 'http://localhost:9000'
 
     - id: create-github-secret
       name: Create github repositry secret
