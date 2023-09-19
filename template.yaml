@@ -145,11 +145,11 @@ spec:
       name: Create github repositry secret of sonar host url
       action: github:repo:secret
       input:
-        githubToken: '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'
+        githubToken: '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'
         repositoryOwner: 'wiseanshul'
         repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_HOST_URL'
-        secretValue: 'http://localhost:9000'
+        secretValue: http://localhost:9000
 
     - id: create-github-secret
       name: Create github repositry secret
