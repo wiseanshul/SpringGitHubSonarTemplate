@@ -117,7 +117,7 @@ spec:
           project: ${{ parameters.projectKey }}
           name: ${{ parameters.projectName }}
         headers:
-          Authorization: 'Bearer '+${{ parameters.barrierToken }}
+          Authorization: 'Bearer ${{ parameters.barrierToken }}'
 
     - id: create-sonarqube-token
       name: Create SonarQube token
@@ -128,7 +128,7 @@ spec:
         params:
           name: ${{ parameters.projectKey }}
         headers:
-          Authorization: 'Bearer '+${{ parameters.barrierToken }}
+          Authorization: 'Bearer ${{ parameters.barrierToken }}'
 
     - id: create-github-secret-sonarhosturl
       name: Create github repositry secret of sonar host url
