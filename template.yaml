@@ -136,7 +136,7 @@ spec:
       input:
         githubToken: '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'
         repositoryOwner: ${{ parameters.owner }}
-        repositoryName: ${{ parameters.repoUrl | parseRepoUrl }}
+        repositoryName: ${{ parameters.repoUrl }}
         secretName: 'SONAR_HOST_URL'
         secretValue: 'http://localhost:9000'
 
@@ -146,6 +146,6 @@ spec:
       input:
         githubToken: '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'
         repositoryOwner: ${{ parameters.owner }}
-        repositoryName: ${{ parameters.repoUrl | parseRepoUrl }}
+        repositoryName: ${{ parameters.repoUrl }}
         secretName: 'SONAR_TOKEN'
         secretValue: ${{ steps.create-sonarqube-token.output.token }}
