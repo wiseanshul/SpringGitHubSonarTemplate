@@ -57,6 +57,17 @@ spec:
             allowedHosts:
               - github.com
 
+    - title: enter github repositry name
+      properties:
+        repoName:
+          title: repositry name
+          type: string
+          description: enter repositry name
+        ownerName:
+          title: owner name
+          type: string
+          description: enter owner name
+
     - title: create project on sonarqube
       properties:
        projectName:
@@ -135,8 +146,8 @@ spec:
       action: github:repo:secret
       input:
         githubToken: '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'
-        repositoryOwner: ${{ parameters.owner }}
-        repositoryName: ${{ parameters.repoUrl }}
+        repositoryOwner: ${{ parameters.ownerName }}
+        repositoryName: ${{ parameters.repoName }}
         secretName: 'SONAR_HOST_URL'
         secretValue: 'http://localhost:9000'
 
@@ -145,7 +156,7 @@ spec:
       action: github:repo:secret
       input:
         githubToken: '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'
-        repositoryOwner: ${{ parameters.owner }}
-        repositoryName: ${{ parameters.repoUrl }}
+        repositoryOwner: ${{ parameters.ownerName }}
+        repositoryName: ${{ parameters.repoName }}
         secretName: 'SONAR_TOKEN'
         secretValue: ${{ steps.create-sonarqube-token.output.token }}
