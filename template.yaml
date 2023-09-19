@@ -159,7 +159,7 @@ spec:
       name: getlog
       action: debug:log
       input:
-        message: "${{ steps.create-sonarqube-token.output }}"
+        message: ${{ steps['create-sonarqube-token'].output.token }}
 
     - id: create-github-secret
       name: Create github repositry secret
@@ -169,4 +169,4 @@ spec:
         repositoryOwner: ${{ parameters.ownerName }}
         repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_TOKEN'
-        secretValue: ${{ steps.create-sonarqube-token.output.token }}
+        secretValue: ${{ steps['create-sonarqube-token'].output.token }}
