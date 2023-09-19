@@ -67,7 +67,7 @@ spec:
          title: projectKey
          type: string
          description: Unique name of the project
-      barrierToken:
+      headers:
         title: berrier token
         type: string
         description: enter your sonarqube user token
@@ -91,7 +91,7 @@ spec:
             http_port: 8080
             projectName: ${{ parameters.projectName }}
             projectKey: ${{ parameters.projectKey }}
-            barrierToken: ${{ parameters.barrierToken }}
+            barrierToken: ${{ parameters.headers }}
     - id: publish
       name: Publish
       action: publish:github
@@ -117,7 +117,7 @@ spec:
           project: ${{ parameters.projectKey }}
           name: ${{ parameters.projectName }}
         headers:
-          Authorization: 'Bearer ${{ parameters.barrierToken }}'
+          Authorization: 'Bearer ${{ parameters.headers }}'
 
     - id: create-sonarqube-token
       name: Create SonarQube token
@@ -128,7 +128,7 @@ spec:
         params:
           name: ${{ parameters.projectKey }}
         headers:
-          Authorization: 'Bearer ${{ parameters.barrierToken }}'
+          Authorization: 'Bearer ${{ parameters.headers }}'
 
     - id: create-github-secret-sonarhosturl
       name: Create github repositry secret of sonar host url
