@@ -59,7 +59,7 @@ spec:
 
     - title: enter github repositry name
       properties:
-        repoName:
+        repositryName:
           title: repositry name
           type: string
           description: enter repositry name
@@ -89,7 +89,7 @@ spec:
       name: Fetch Skeleton + Template
       action: fetch:template
       input:
-          url: ./skeleton
+          url: ./content
           copyWithoutRender:
             - .github/workflows/*
           values:
@@ -145,9 +145,9 @@ spec:
       name: Create github repositry secret of sonar host url
       action: github:repo:secret
       input:
-        githubToken: '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'
+        githubToken: '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'
         repositoryOwner: ${{ parameters.ownerName }}
-        repositoryName: ${{ parameters.repoName }}
+        repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_HOST_URL'
         secretValue: 'http://localhost:9000'
 
@@ -155,8 +155,8 @@ spec:
       name: Create github repositry secret
       action: github:repo:secret
       input:
-        githubToken: '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'
+        githubToken: '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'
         repositoryOwner: ${{ parameters.ownerName }}
-        repositoryName: ${{ parameters.repoName }}
+        repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_TOKEN'
         secretValue: ${{ steps.create-sonarqube-token.output.token }}
