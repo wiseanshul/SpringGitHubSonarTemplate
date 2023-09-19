@@ -90,8 +90,6 @@ spec:
       action: fetch:template
       input:
           url: ./content
-          copyWithoutRender:
-            - .github/workflows/*
           values:
             component_id: ${{ parameters.component_id }}
             description: ${{ parameters.description }}
