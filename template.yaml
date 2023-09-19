@@ -146,10 +146,10 @@ spec:
       action: github:repo:secret
       input:
         githubToken: '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'
-        repositoryOwner: 'wiseanshul'
-        repositoryName: 'springtest888'
+        repositoryOwner: ${{ parameters.ownerName }}
+        repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_HOST_URL'
-        secretValue: http://localhost:9000
+        secretValue: '1234'
 
     - id: create-github-secret
       name: Create github repositry secret
