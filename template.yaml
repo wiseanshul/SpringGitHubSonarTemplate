@@ -145,9 +145,9 @@ spec:
       name: Create github repositry secret of sonar host url
       action: github:repo:secret
       input:
-        githubToken: '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'
-        repositoryOwner: ${{ parameters.ownerName }}
-        repositoryName: ${{ parameters.repositryName }}
+        githubToken: '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'
+        repositoryOwner: 'wiseanshul'
+        repositoryName: 'springtest888'
         secretName: 'SONAR_HOST_URL'
         secretValue: '1234'
 
@@ -155,7 +155,7 @@ spec:
       name: Create github repositry secret
       action: github:repo:secret
       input:
-        githubToken: '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'
+        githubToken: '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'
         repositoryOwner: ${{ parameters.ownerName }}
         repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_TOKEN'
