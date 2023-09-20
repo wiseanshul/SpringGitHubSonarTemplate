@@ -111,7 +111,6 @@ spec:
             projectName: ${{ parameters.projectName }}
             organizationName: ${{ parameters.organizationName }}
             projectKey: ${{ parameters.projectKey }}
-
             barrierToken: ${{ parameters.headers }}
     - id: publish
       name: Publish
