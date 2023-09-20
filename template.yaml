@@ -82,6 +82,10 @@ spec:
          title: projectKey
          type: string
          description: Unique name of the project
+       organizationName:
+         title: organization name
+         type: string
+         description: enter your sonarcloud organization name
        headers:
         title: berrier token
         type: string
@@ -105,7 +109,9 @@ spec:
             destination: ${{ parameters.repoUrl | parseRepoUrl }}
             http_port: 8080
             projectName: ${{ parameters.projectName }}
+            organizationName: ${{ parameters.organizationName }}
             projectKey: ${{ parameters.projectKey }}
+
             barrierToken: ${{ parameters.headers }}
     - id: publish
       name: Publish
@@ -126,11 +132,12 @@ spec:
       name: Create SonarQube Project
       action: api-call
       input:
-        url: 'http://localhost:9000/api/projects/create'
+        url: 'https://sonarcloud.io/api/projects/create'
         method: 'POST'
         params:
           project: ${{ parameters.projectKey }}
           name: ${{ parameters.projectName }}
+          organization: ${{ parameters.organizationName }}
         headers:
           Authorization: 'Bearer ${{ parameters.headers }}'
 
@@ -138,22 +145,12 @@ spec:
       name: Create SonarQube token
       action: api-call
       input:
-        url: 'http://localhost:9000/api/user_tokens/generate'
+        url: 'https://sonarcloud.io/api/user_tokens/generate'
         method: 'POST'
         params:
           name: ${{ parameters.projectKey }}
         headers:
           Authorization: 'Bearer ${{ parameters.headers }}'
-
-    - id: create-github-secret-sonarhosturl
-      name: Create github repositry secret of sonar host url
-      action: github:repo:secret
-      input:
-        githubToken: ${{ parameters.githubToken }}
-        repositoryOwner: ${{ parameters.ownerName }}
-        repositoryName: ${{ parameters.repositryName }}
-        secretName: 'SONAR_HOST_URL'
-        secretValue: 'http://localhost:9000'
 
     - id: loggg
       name: getlog
@@ -170,3 +167,13 @@ spec:
         repositoryName: ${{ parameters.repositryName }}
         secretName: 'SONAR_TOKEN'
         secretValue: ${{ steps['create-sonarqube-token'].output.response }}
+
+#    - id: create-github-secret-sonarhosturl
+#      name: Create github repositry secret of sonar host url
+#      action: github:repo:secret
+#      input:
+#        githubToken: ${{ parameters.githubToken }}
+#        repositoryOwner: ${{ parameters.ownerName }}
+#        repositoryName: ${{ parameters.repositryName }}
+#        secretName: 'SONAR_HOST_URL'
+#        secretValue: 'http://localhost:9000'
