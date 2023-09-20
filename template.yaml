@@ -134,9 +134,9 @@ spec:
         url: 'https://sonarcloud.io/api/projects/create'
         method: 'POST'
         params:
+          organization: ${{ parameters.organizationName }}
           project: ${{ parameters.projectKey }}
           name: ${{ parameters.projectName }}
-          organization: ${{ parameters.organizationName }}
         headers:
           Authorization: 'Bearer ${{ parameters.headers }}'
 
